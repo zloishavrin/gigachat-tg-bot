@@ -2,9 +2,9 @@ const TelegramBot = require('node-telegram-bot-api');
 const GigaChat = require('gigachat-node').GigaChat;
 
 // Ваш ключ от Telegram Bot API
-const TG_API_TOKEN = "YOUR_TELEGRAM_BOT_API_KEY";
+const TG_API_TOKEN = "TG_API_KEY";
 // Ваш ключ от GigaChat API
-const GIGACHAT_API_TOKEN = "YOUR_GIGACHAT_API_KEY";
+const GIGACHAT_API_TOKEN = "GIGACHAT_API_KEY";
 
 const bot = new TelegramBot(TG_API_TOKEN, { polling: true });
 
@@ -34,7 +34,6 @@ const main = async () => {
       // Проверка на пустой ответ
       if (!response || !response.choices || response.choices.length === 0) {
         bot.sendMessage(chatId, 'Произошла ошибка при обработке запроса.');
-        logger.error(`Error: Empty response from GigaChat for message: ${messageText}`);
         return;
       }
 
@@ -44,9 +43,9 @@ const main = async () => {
       bot.sendMessage(chatId, replyText);
     } 
     catch (error) {
+      console.log(error);
       // Обработка ошибок при запросе к GigaChat
       bot.sendMessage(chatId, 'Произошла ошибка при общении с GigaChat. Попробуйте снова позже.');
-      logger.error(`Error during GigaChat request: ${error.message}`);
     }
   });
 }

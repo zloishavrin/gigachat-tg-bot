@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "gigachat-node": "^2.1.6",
+    "gigachat-node": "^2.4.5",
     "node-telegram-bot-api": "^0.66.0"
   }
 }
